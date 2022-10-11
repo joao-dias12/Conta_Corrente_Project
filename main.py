@@ -15,7 +15,27 @@ cabecalho('Abertura de Conta Corrente')
 
 conta_Joao = ContaCorrente('João', '111111', '3411-1', '77777')
 
-deposito = conta_Joao.depositar(200)
+cabecalho('Primeiro Depósito')
+conta_Joao.depositar(200)
+lista = conta_Joao._transacoes
+print(lista)
 
-print(f'Como você depositou R${deposito[0]:,.2f} , o seu saldo é R${deposito[1]:,.2f}')
-print(conta_Joao.consutar_limite_chequeespecial())
+cabecalho('Segundo Depósito')
+conta_Joao.depositar(1500)
+lista = conta_Joao._transacoes
+print(lista)
+
+cabecalho('Primeiro Saque')
+conta_Joao.sacar(200)
+print(lista)
+
+
+cabecalho('Primeira Transferência')
+conta_mae_joao = ContaCorrente('Marilda', '1100011', '1103211-1', '111321')
+print(f' O saldo da {conta_mae_joao._nome} é {conta_mae_joao.consultar_saldo()}')
+print('-'*20)
+
+conta_Joao.transferir(1000, conta_mae_joao)
+
+print(f'O saldo de {conta_Joao._nome} é {conta_Joao.consultar_saldo()}')
+print(f'O saldo da {conta_mae_joao._nome} é {conta_mae_joao.consultar_saldo()}')
