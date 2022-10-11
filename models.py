@@ -1,5 +1,7 @@
+from datetime import datetime
+import pytz
 import time
-
+from random import randint
 
 class ContaCorrente:
     """
@@ -30,6 +32,7 @@ class ContaCorrente:
         self._agencia = agencia
         self._num_conta = num_conta
         self._transacoes = []
+        self.cartoes = []
 
     def consultar_saldo(self):
         """
@@ -111,12 +114,30 @@ class ContaCorrente:
 class CartaoCredito:
     """
     Esse classe são os objetos cartão de crédito dos nossos clientes
-    """
+    Atributos:
+        Numero: Numero do cartão
+        titular: Pesssoa Titular da conta
+        validade: Data de Validade
+        cod_segurança: Código de segurança do cartão
+        limite: Limite do cartão de crédito
+        Conta corrente: Conta ao qual o cartão é vinculado, relação de ManyToOne
 
+    """
+    @staticmethod
+    def _data_hora():
+        """
+        Função interna para calcular a hora
+        :return: hora daquele momento
+        """
+        fuso_BR = pytz.timezone('Brazil/East')
+        horario_BR = datetime.now(fuso_BR)
+
+        return horario_BR
     def __init__(self, titular, conta_corrente):
-        self.numero = None
+        self.numero = randint(1000000000000000, 9999999999999999)
         self.titular = titular
-        self.validade = None
-        self.cod_seguranca = None
-        self.limite = None
+        self.validade = f'{CartaoCredito._data_hora().month}/{CartaoCredito._data_hora().year + 4}'
+        self.cod_seguranca = f'{randint(0,9)} {randint(0,9)} {randint(0,9)}'
+        self.limite = 1000
         self.conta_corrente = conta_corrente
+        conta_corrente.cartoes.append({'Cartão': self, 'Tipo': 'Crédito'})

@@ -1,5 +1,5 @@
 from lib.interface import *
-from models import ContaCorrente
+from models import ContaCorrente, CartaoCredito
 
 cabecalho('Abertura de Conta Corrente')
 
@@ -15,27 +15,38 @@ cabecalho('Abertura de Conta Corrente')
 
 conta_Joao = ContaCorrente('João', '111111', '3411-1', '77777')
 
-cabecalho('Primeiro Depósito')
-conta_Joao.depositar(200)
-lista = conta_Joao._transacoes
-print(lista)
+# cabecalho('Primeiro Depósito')
+# conta_Joao.depositar(200)
+# lista = conta_Joao._transacoes
+# print(lista)
+#
+# cabecalho('Segundo Depósito')
+# conta_Joao.depositar(1500)
+# lista = conta_Joao._transacoes
+# print(lista)
+#
+# cabecalho('Primeiro Saque')
+# conta_Joao.sacar(200)
+# print(lista)
+#
+#
+# cabecalho('Primeira Transferência')
+# conta_mae_joao = ContaCorrente('Marilda', '1100011', '1103211-1', '111321')
+# print(f' O saldo da {conta_mae_joao._nome} é {conta_mae_joao.consultar_saldo()}')
+# print('-'*20)
+#
+# conta_Joao.transferir(1000, conta_mae_joao)
+#
+# print(f'O saldo de {conta_Joao._nome} é {conta_Joao.consultar_saldo()}')
+# print(f'O saldo da {conta_mae_joao._nome} é {conta_mae_joao.consultar_saldo()}')
 
-cabecalho('Segundo Depósito')
-conta_Joao.depositar(1500)
-lista = conta_Joao._transacoes
-print(lista)
+cartao_joao = CartaoCredito('João', conta_Joao)
 
-cabecalho('Primeiro Saque')
-conta_Joao.sacar(200)
-print(lista)
+print(cartao_joao.conta_corrente._num_conta)
+print(conta_Joao.cartoes)
 
+cabecalho('Inserindo Campos de Data , numero do cartão e código de segurança')
+print(cartao_joao.validade)
+print(cartao_joao.numero)
+print(cartao_joao.cod_seguranca)
 
-cabecalho('Primeira Transferência')
-conta_mae_joao = ContaCorrente('Marilda', '1100011', '1103211-1', '111321')
-print(f' O saldo da {conta_mae_joao._nome} é {conta_mae_joao.consultar_saldo()}')
-print('-'*20)
-
-conta_Joao.transferir(1000, conta_mae_joao)
-
-print(f'O saldo de {conta_Joao._nome} é {conta_Joao.consultar_saldo()}')
-print(f'O saldo da {conta_mae_joao._nome} é {conta_mae_joao.consultar_saldo()}')
