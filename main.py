@@ -1,5 +1,6 @@
 from lib.interface import *
-from models import ContaCorrente, CartaoCredito
+from Contas.models import ContaCorrente, CartaoCredito
+from Agencias.models import Agencia
 
 cabecalho('Abertura de Conta Corrente')
 
@@ -56,3 +57,18 @@ print(cartao_joao.senha)
 
 cabecalho('Como acessar todos os atributos de um objeto')
 print(conta_Joao.__dict__)
+
+cabecalho('Começando a mexer nas agências')
+agencoa1 = Agencia('24257284', 'awda1231-12', '423456789')
+
+agencoa1.verificacao_de_caixa()
+
+agencoa1.caixa = 2*10**6
+agencoa1.verificacao_de_caixa()
+
+cabecalho('Emprestimos')
+agencoa1.emprestar_dinheiro(3*10**6, '1231412', 0.02)
+
+print(agencoa1.emprestar_dinheiro(1*10**6, '123123', 0.02))
+
+print(agencoa1.emprestimos)
