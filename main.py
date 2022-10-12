@@ -32,13 +32,13 @@ conta_Joao = ContaCorrente('João', '111111', '3411-1', '77777')
 #
 # cabecalho('Primeira Transferência')
 # conta_mae_joao = ContaCorrente('Marilda', '1100011', '1103211-1', '111321')
-# print(f' O saldo da {conta_mae_joao._nome} é {conta_mae_joao.consultar_saldo()}')
+# print(f' O saldo da {conta_mae_joao.nome} é {conta_mae_joao.consultar_saldo()}')
 # print('-'*20)
 #
 # conta_Joao.transferir(1000, conta_mae_joao)
 #
-# print(f'O saldo de {conta_Joao._nome} é {conta_Joao.consultar_saldo()}')
-# print(f'O saldo da {conta_mae_joao._nome} é {conta_mae_joao.consultar_saldo()}')
+# print(f'O saldo de {conta_Joao.nome} é {conta_Joao.consultar_saldo()}')
+# print(f'O saldo da {conta_mae_joao.nome} é {conta_mae_joao.consultar_saldo()}')
 
 cartao_joao = CartaoCredito('João', conta_Joao)
 
@@ -50,3 +50,9 @@ print(cartao_joao.validade)
 print(cartao_joao.numero)
 print(cartao_joao.cod_seguranca)
 
+cabecalho('Criando e validando senha')
+cartao_joao.senha = '12'
+print(cartao_joao.senha)
+
+cabecalho('Como acessar todos os atributos de um objeto')
+print(conta_Joao.__dict__)
