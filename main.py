@@ -1,7 +1,6 @@
 from lib.interface import *
 from Contas.models import ContaCorrente, CartaoCredito
-from Agencias.models import Agencia
-
+from Agencias.models import *
 cabecalho('Abertura de Conta Corrente')
 
 # while True:
@@ -72,3 +71,11 @@ agencoa1.emprestar_dinheiro(3*10**6, '1231412', 0.02)
 print(agencoa1.emprestar_dinheiro(1*10**6, '123123', 0.02))
 
 print(agencoa1.emprestimos)
+
+cabecalho('Agencias e Subclasses')
+
+agencia_virtual = AgenciaVirtual('www.agenciavirtual.com.br', '2222-2222', '0001-102938474')
+print(f"Essa é a agencia virtual:  {agencia_virtual} e esse é o seu caixa: R${agencia_virtual.caixa:,.2f}")
+
+agencia_comum = AgenciaComum('123343545', '121831723')
+agencia_comum.verificacao_de_caixa()

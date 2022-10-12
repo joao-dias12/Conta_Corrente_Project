@@ -1,5 +1,7 @@
+import random
 from datetime import datetime
 import pytz
+
 
 class Agencia:
     """
@@ -35,19 +37,47 @@ class Agencia:
         self.emprestimos = []
 
     def verificacao_de_caixa(self):
-        if self.caixa < 1*10**6:
+        if self.caixa < 1 * 10 ** 6:
             print(f'Caixa abaixo do nivel recomendado, Caixa Atual: R${self.caixa:,.2f}')
         else:
             print(f'Caixa Aprovado - Caixa Atual: R${self.caixa:,.2f}')
 
     def emprestar_dinheiro(self, valor, cpf, juros):
         emprestimo = {'Valor': valor, 'CPF': cpf, 'Juros': juros, 'Data': self._data_hora()}
-        self.emprestimos.append(emprestimo.copy()) and print('Emprestimo Aceit') if self.caixa > valor else print(
-            'Valor acima do encontrado em caixa'
-        )
+        if self.caixa > valor:
+            self.emprestimos.append(emprestimo.copy())
+            print('Emprestimo Aceit')
+        else:
+            print('Valor acima do encontrado em caixa')
+
         return emprestimo
 
     def adicionar_cliente(self, nome, cpf, patrimonio):
-        cliente = {'Nome': nome, 'cpf': cpf, 'Patrimonio': patrimonio }
+        cliente = {'Nome': nome, 'cpf': cpf, 'Patrimonio': patrimonio}
         self.clientes.append(cliente)
         return cliente
+
+
+class AgenciaVirtual(Agencia):
+
+    def __init__(self, url, telefone, cnpj):
+        super().__init__(telefone, cnpj, 1000)  # O super().__init__ traz todos os atributos do "init" da  classe mãe.
+        # Garantindo que sejam mantidas as heranças da classe mãe.
+        self.url = url
+        self.caixa = 10 ** 6
+
+    def
+
+
+class AgenciaComum(Agencia):
+
+    def __init__(self, telefone, cnpj):
+        super().__init__(telefone, cnpj, random.randint(1000, 9999))
+        self.caixa = 10 ** 6
+
+
+class AgenciaPremiun(Agencia):
+
+    def __init__(self, telefone, cnpj):
+        super().__init__(telefone, cnpj, random.randint(1000, 9999))
+        self.caixa = 10 ** 7
