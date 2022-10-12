@@ -107,3 +107,18 @@ class AgenciaPremiun(Agencia):
     def __init__(self, telefone, cnpj):
         super().__init__(telefone, cnpj, random.randint(1000, 9999))
         self.caixa = 10 ** 7
+
+    def adicionar_cliente(self, nome, cpf, patrimonio):
+        if patrimonio > 10**6:
+            #Adicionar cliente
+            super().adicionar_cliente(nome, cpf, patrimonio)  #Herdando o metodo da classe mãe
+            # e modificando ele/utilizando e agregando
+            print('Cliente Premium Adicionado')
+        else:
+            print('O cliente não tem patrimonio sufuciente para ser Premiium')
+
+
+
+if __name__ == '__main__': ## garantindo que os testes feitos nesse arquivo não sejam rodados junto com a main ou
+    # qualquer outro lugar que importe as classes
+    agencia_premium = AgenciaPremiun()

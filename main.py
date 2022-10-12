@@ -85,3 +85,9 @@ cabecalho('Métodos das Subclasses')
 agencia_virtual.depositar_paypal(4*10**5)
 print(agencia_virtual.caixa)
 print(agencia_virtual.caixa_paypal)
+
+cabecalho('Metodos das classes alterados dentro da Subclasse')
+
+agencia_premium = AgenciaPremiun('12213-12312', '01111-1012931')
+
+agencia_premium.adicionar_cliente('Joao', '111-11-11-1', 20**6)
