@@ -79,3 +79,9 @@ print(f"Essa é a agencia virtual:  {agencia_virtual} e esse é o seu caixa: R${
 
 agencia_comum = AgenciaComum('123343545', '121831723')
 agencia_comum.verificacao_de_caixa()
+
+cabecalho('Métodos das Subclasses')
+
+agencia_virtual.depositar_paypal(4*10**5)
+print(agencia_virtual.caixa)
+print(agencia_virtual.caixa_paypal)
